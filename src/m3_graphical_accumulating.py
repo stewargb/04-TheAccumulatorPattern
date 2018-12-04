@@ -9,10 +9,11 @@ Additionally, it emphasizes that you must
 before you can implement a solution to the problem in Python.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
-         Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Aaron Wilkin, their colleagues, and Grant Stewar.
+"""  # done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
+import math
 
 
 # -----------------------------------------------------------------------------
@@ -88,15 +89,25 @@ def draw_parallel_lines(n, point, length, window):
         -- Each rg.Line has the given length.
         -- Each rg.Line is 30 pixels below the previous rg.Line.
       Must  ** render **     but   ** NOT close **   the window.
-
     Type hints:
       :type n: int
       :type point: rg.Point
       :type length: int
       :type window: rg.RoseWindow
     """
+    x = point.x
+    y = point.y
+    for k in range(n):
+        line=rg.Line(rg.Point(point.x,y),rg.Point(x+length,y))
+        y = y + 30
+        line.attach_to(window)
+
+        window.render()
+
+
+
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -160,8 +171,20 @@ def draw_lines(n, point, window):
       :type point: rg.Point
       :type window: rg.RoseWindow
     """
+    x = point.x
+    y = point.y
+
+    for k in range(n):
+            line = rg.Line(point, rg.Point(x + 100, y-100))
+            y=y+200/(n-1)
+            line.attach_to(window)
+            window.render()
+
+
+
+
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
